@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Summary from "./components/Summary";
+import Task from "./components/Task";
+import Form from "./components/Form";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = { todos: [] };
+
+  toAddTask = (input) => {
+    let updatedTodos = [
+      ...this.state.todos,
+      {
+        id: this.state.todos.length,
+        description: input,
+        status: false,
+      },
+    ];
+    this.setState({
+      todos: updatedTodos,
+    });
+  };
+
+  // toToggleTask = (id) => {
+  //   let chosenTask = this.state.todos[id].id === id ? this.state.todos[0] : null;
+  //   console.log(chosenTask, this.state.todos[0].id, id, this.state.todos[(id = 0)].status);
+  //   this.setState({ ...chosenTask, status: true });
+  // };
+  render() {
+    return (
+      <div>
+        <Summary todosTotalNumber={this.state.todos.length} />
+        <Form toAddTask={this.toAddTask} />
+        {this.state.todos
+          ? this.state.todos.map((todo) => (
+              <Task key={todo.id} toToggleTask={this.toToggleTask} todo={todo} />
+            ))
+          : null}
+      </div>
+    );
+  }
 }
 
 export default App;
