@@ -21,11 +21,19 @@ class App extends React.Component {
     });
   };
 
-  // toToggleTask = (id) => {
-  //   let chosenTask = this.state.todos[id].id === id ? this.state.todos[0] : null;
-  //   console.log(chosenTask, this.state.todos[0].id, id, this.state.todos[(id = 0)].status);
-  //   this.setState({ ...chosenTask, status: true });
-  // };
+  toToggleTask = (id) => {
+    let chosenTask = { ...this.state.todos[id], status: !this.state.todos[id].status };
+    this.setState({
+      ...(this.state.todos[id] = chosenTask),
+    });
+  };
+
+  archiveCompletedTodos = ()=>{
+    let noncompletedTasks = this.state.todos.filter(todo=>!todo.status);
+    this.setState({
+      todos: noncompletedTasks
+    })
+  }
   render() {
     return (
       <div>
@@ -36,6 +44,7 @@ class App extends React.Component {
               <Task key={todo.id} toToggleTask={this.toToggleTask} todo={todo} />
             ))
           : null}
+        <button onClick={this.archiveCompletedTodos}>ARCHIVE</button>
       </div>
     );
   }
