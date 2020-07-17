@@ -22,9 +22,9 @@ class App extends React.Component {
   };
 
   toToggleTask = (id) => {
-    let chosenTask = { ...this.state.todos[id], status: !this.state.todos[id].status };
+    let updatedTodos = this.state.todos.map(todo=>todo.id===parseInt(id)?{...todo,status:!todo.status}:todo)
     this.setState({
-      ...(this.state.todos[id] = chosenTask),
+      todos: updatedTodos,
     });
   };
 
