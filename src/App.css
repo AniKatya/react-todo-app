@@ -1,3 +1,75 @@
-.todo-line{
+html{
+  background-color: #264653;
+  font-size: 20px;
+}
+
+.todo-line {
   display: flex;
 }
+
+.todoList-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40vw;
+  background-color: #2a9d8f;
+  height: 60vh;
+  margin: -30vh 0 0 -20vw;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.form-main {
+  display: flex;
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+.form-main input {
+  width: 80%;
+  border-radius: 5px;
+  border: 2px solid #FFF;
+}
+
+.form-main input:focus{
+  outline: none;
+  border-color: #e9c46a;
+}
+button {
+  border: none;
+  outline: none;
+}
+button:active{
+  transform: scale(0.98);
+  transform: translateY(2px)
+}
+
+.form-main button {
+  width: 20%;
+  border-radius: 5px;
+}
+
+#add-btn {
+  background-color: #e9c46a;
+}
+
+#archive-btn {
+  background-color: #e76f51;
+  width: 20%;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+}
+
+.todoList-lines {
+  overflow-y: scroll;
+  height: 70%;
+  margin: 5px 0 10px 5px;
+}
+
+.summary-main{
+  margin-bottom: 20px;
+  text-align: center;
+}
+

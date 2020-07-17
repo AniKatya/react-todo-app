@@ -11,9 +11,9 @@ class Form extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="form-main">
         <input type="text" placeholder="Type a task description" ref={(input) => (this.textInput = input)} />
-        <button onClick={this.toAddTask}>ADD</button>
+        <button id="add-btn" onClick={this.toAddTask}>ADD</button>
       </div>
     );
   }

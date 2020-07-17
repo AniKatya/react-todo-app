@@ -36,15 +36,16 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className='todoList-main'>
         <Summary todosTotalNumber={this.state.todos.length} />
         <Form toAddTask={this.toAddTask} />
-        {this.state.todos
+        <div className="todoList-lines">{this.state.todos
           ? this.state.todos.map((todo) => (
               <Task key={todo.id} toToggleTask={this.toToggleTask} todo={todo} />
             ))
           : null}
-        <button onClick={this.archiveCompletedTodos}>ARCHIVE</button>
+          </div>
+        <button id="archive-btn" onClick={this.archiveCompletedTodos}>ARCHIVE</button>
       </div>
     );
   }
